@@ -1,11 +1,12 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./shimmer";
+import Restaurants from "./Restraunts";
 
 const Body = () => {
   //local state variable -super powerful variable
   const [listOfRestaurants, setlistOfRestaurant] = useState([]);
-  const [helloWorld, setHelloWorld] = useState([]);
+  const [helloWorld, setFilteredRestaurant] = useState([]);
 
   const [searchText, setSearchText] = useState("");
 
@@ -30,9 +31,15 @@ const Body = () => {
     );
 
     result = result.flat().filter((val) => val);
-    setlistOfRestaurant(result);
-    setHelloWorld(result);
-    console.log(result);
+
+    const obj = {};
+
+    for (const val of result) {
+      obj[val.info.id] = val;
+    }
+
+    setlistOfRestaurant(Object.values(obj));
+    setFilteredRestaurant(Object.values(obj));
   };
 
   return helloWorld.length === 0 ? (
@@ -60,7 +67,7 @@ const Body = () => {
               });
 
               const xy = JSON.parse(JSON.stringify(filterRestaurants));
-              setHelloWorld(xy);
+              setFilteredRestaurant(xy);
             }}
           >
             Search
@@ -80,11 +87,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {helloWorld.map((restaurant) => {
-          return (
-            <RestaurantCard key={restaurant.info.id} resData={restaurant} />
-          );
-        })}
+        <Restaurants list={helloWorld} />
       </div>
     </div>
   );
