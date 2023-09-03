@@ -1,18 +1,18 @@
 import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./shimmer";
-import Restaurants from "./Restraunts";
+import Restaurants from "./Restaurants";
 
 const Body = () => {
   //local state variable -super powerful variable
   const [listOfRestaurants, setlistOfRestaurant] = useState([]);
-  const [helloWorld, setFilteredRestaurant] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
 
   const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
-    console.log(helloWorld);
-  }, [helloWorld]);
+    console.log(filteredRestaurant);
+  }, [filteredRestaurant]);
 
   console.log("body render");
   useEffect(() => {
@@ -26,7 +26,7 @@ const Body = () => {
     const json = await data.json();
     console.log(json);
 
-    let result = json.data.cards.map(
+    let result = json.data?.cards.map(
       (card) => card.card.card.gridElements?.infoWithStyle.restaurants
     );
 
@@ -42,7 +42,7 @@ const Body = () => {
     setFilteredRestaurant(Object.values(obj));
   };
 
-  return helloWorld.length === 0 ? (
+  return filteredRestaurant.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="body">
@@ -66,8 +66,7 @@ const Body = () => {
                   .includes(searchText.toLowerCase());
               });
 
-              const xy = JSON.parse(JSON.stringify(filterRestaurants));
-              setFilteredRestaurant(xy);
+              setFilteredRestaurant(filterRestaurants);
             }}
           >
             Search
@@ -76,18 +75,18 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            const filteredList = listOfRestaurants.filter((res) => {
-              console.log(res.info.avgRating);
-              return res.info.avgRating > 4.3;
-            });
-            setlistOfRestaurant(filteredList);
+            const filteredList = listOfRestaurants.filter(
+              (res) => res.info.avgRating > 4.3
+            );
+
+            setFilteredRestaurant(filteredList);
           }}
         >
           Top Rated Restaurant
         </button>
       </div>
       <div className="res-container">
-        <Restaurants list={helloWorld} />
+        <Restaurants list={filteredRestaurant} />
       </div>
     </div>
   );
