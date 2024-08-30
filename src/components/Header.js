@@ -1,51 +1,98 @@
-import { LOGO_URL } from "../utils/contants";
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
+import { LOGO_URL } from "../utils/contants";
 
 const Header = () => {
   const [btnNameReact, setBtnNameReact] = useState("Login");
   const onlineStatus = useOnlineStatus();
-  useEffect(() => {
-    console.log("useeffect called");
-  }, []);
+
+  const { loggedInUser } = useContext(UserContext);
+
+  // Subscribing to the store using Selector
+  const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="flex justify-between bg-pink-100 shadow-lg m-2 mb-2 px-2 sm:bg-yellow-50 ">
-      <div className="logo-container">
-        <img className="w-56" src={LOGO_URL}></img>
+    <header className="flex justify-between items-center bg-gradient-to-r from-purple-500 to-indigo-600 shadow-lg m-2 px-6 py-4 rounded-lg text-white">
+      {/* Logo Section */}
+      <div className="flex-shrink-0">
+        <Link to="/">
+          <img
+            className="w-40 h-auto object-contain"
+            src={LOGO_URL}
+            alt="Logo"
+          />
+        </Link>
       </div>
-      <div className="flex items-center">
-        <ul className="flex p-4 m-4  ">
-          <li className="px-1">Online Status:{onlineStatus ? "🟢" : "🔴"}</li>
-          <li className="px-1">
-            <Link to="/">Home</Link>
+
+      {/* Navigation Links */}
+      <nav className="flex items-center space-x-6">
+        <ul className="flex items-center space-x-6">
+          <li className="flex items-center space-x-2">
+            <span className="text-sm">Online Status:</span>
+            <span className={onlineStatus ? "text-green-400" : "text-red-400"}>
+              {onlineStatus ? "🟢" : "🔴"}
+            </span>
           </li>
-          <li className="px-1">
-            <Link to="/about">About Us</Link>
+          <li>
+            <Link
+              to="/"
+              className="hover:text-yellow-300 transition-colors duration-200"
+            >
+              Home
+            </Link>
           </li>
-          <li className="px-1">
-            <Link to="/contact">Contact Us</Link>
+          <li>
+            <Link
+              to="/about"
+              className="hover:text-yellow-300 transition-colors duration-200"
+            >
+              About Us
+            </Link>
           </li>
-          <li className="px-1">
-            <Link to="/grocery">Grocery </Link>
+          <li>
+            <Link
+              to="/contact"
+              className="hover:text-yellow-300 transition-colors duration-200"
+            >
+              Contact Us
+            </Link>
           </li>
-          <li className="px-1">
-            <Link to="/cart">Cart</Link>
+          <li>
+            <Link
+              to="/grocery"
+              className="hover:text-yellow-300 transition-colors duration-200"
+            >
+              Grocery
+            </Link>
           </li>
-          <button
-            className="login"
-            onClick={() => {
-              btnNameReact === "Login"
-                ? setBtnNameReact("Logout")
-                : setBtnNameReact("Login");
-            }}
-          >
-            {btnNameReact}
-          </button>
+          <li>
+            <Link
+              to="/cart"
+              className="hover:text-yellow-300 transition-colors duration-200 flex items-center"
+            >
+              🛒 Cart
+              <span className="ml-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {cartItems.length}
+              </span>
+            </Link>
+          </li>
+          <li>{loggedInUser}</li>
         </ul>
-      </div>
-    </div>
+
+        {/* Login/Logout Button */}
+        <button
+          className="ml-4 px-4 py-2 bg-yellow-500 text-indigo-600 font-semibold rounded-lg hover:bg-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-300 transition-colors duration-200"
+          onClick={() => {
+            setBtnNameReact(btnNameReact === "Login" ? "Logout" : "Login");
+          }}
+        >
+          {btnNameReact}
+        </button>
+      </nav>
+    </header>
   );
 };
 
