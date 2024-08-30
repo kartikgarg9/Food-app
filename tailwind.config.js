@@ -1,8 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ["./src/**/*.{html,js,jsx,ts,tsx}"], // Ensure you include all relevant file types
   theme: {
-    extend: {},
+    extend: {
+      keyframes: {
+        shimmer: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
+      },
+      animation: {
+        shimmer: "shimmer 1.5s infinite",
+      },
+    },
   },
   plugins: [],
 };

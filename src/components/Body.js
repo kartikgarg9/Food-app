@@ -2,7 +2,6 @@ import RestaurantCard, { withPromtedLabel } from "./RestaurantCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./shimmer";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestraunt] = useState([]);
