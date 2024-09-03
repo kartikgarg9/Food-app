@@ -7,10 +7,10 @@ const RestaurantCard = (props) => {
     resData;
 
   return (
-    <Link to={"/restaurants/" + resData.id}>
-      <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200 flex flex-col ">
+    <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200 flex flex-col ">
+      <Link to={"/restaurants/" + resData.id}>
         <img
-          className="rounded-lg mb-4"
+          className="rounded-lg mb-4 h-48 w-full object-cover"
           alt="res-logo"
           src={CDN_URL + cloudinaryImageId}
         />
@@ -23,8 +23,8 @@ const RestaurantCard = (props) => {
           <h4 className="text-sm text-gray-700">{costForTwo}</h4>
           <h4 className="text-sm text-gray-700">{sla?.slaString}</h4>
         </div>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 
