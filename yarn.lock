@@ -1360,7 +1360,7 @@
   dependencies:
     "@parcel/plugin" "2.12.0"
 
-"@parcel/config-default@2.12.0":
+"@parcel/config-default@^2.12.0", "@parcel/config-default@2.12.0":
   version "2.12.0"
   resolved "https://registry.npmjs.org/@parcel/config-default/-/config-default-2.12.0.tgz"
   integrity sha512-dPNe2n9eEsKRc1soWIY0yToMUPirPIa2QhxcCB3Z5RjpDGIXm0pds+BaiqY6uGLEEzsjhRO0ujd4v2Rmm0vuFg==
@@ -1783,7 +1783,7 @@
     "@parcel/workers" "2.12.0"
     nullthrows "^1.1.1"
 
-"@parcel/transformer-js@2.12.0":
+"@parcel/transformer-js@^2.12.0", "@parcel/transformer-js@2.12.0":
   version "2.12.0"
   resolved "https://registry.npmjs.org/@parcel/transformer-js/-/transformer-js-2.12.0.tgz"
   integrity sha512-OSZpOu+FGDbC/xivu24v092D9w6EGytB3vidwbdiJ2FaPgfV7rxS0WIUjH4I0OcvHAcitArRXL0a3+HrNTdQQw==
@@ -1842,7 +1842,7 @@
   dependencies:
     "@parcel/plugin" "2.12.0"
 
-"@parcel/transformer-react-refresh-wrap@2.12.0":
+"@parcel/transformer-react-refresh-wrap@^2.12.0", "@parcel/transformer-react-refresh-wrap@2.12.0":
   version "2.12.0"
   resolved "https://registry.npmjs.org/@parcel/transformer-react-refresh-wrap/-/transformer-react-refresh-wrap-2.12.0.tgz"
   integrity sha512-GE8gmP2AZtkpBIV5vSCVhewgOFRhqwdM5Q9jNPOY5PKcM3/Ff0qCqDiTzzGLhk0/VMBrdjssrfZkVx6S/lHdJw==
@@ -4269,7 +4269,7 @@ p-try@^2.0.0:
   resolved "https://registry.npmjs.org/p-try/-/p-try-2.2.0.tgz"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
 
-parcel@^2.9.3:
+parcel@^2.12.0:
   version "2.12.0"
   resolved "https://registry.npmjs.org/parcel/-/parcel-2.12.0.tgz"
   integrity sha512-W+gxAq7aQ9dJIg/XLKGcRT0cvnStFAQHPaI0pvD0U2l6IVLueUAm3nwN7lkY62zZNmlvNx6jNtE4wlbS+CyqSg==

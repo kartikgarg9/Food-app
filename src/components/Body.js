@@ -21,7 +21,7 @@ const Body = () => {
     const json = await data.json();
     const resData =
       json.data.cards[1].card?.card?.gridElements?.infoWithStyle.restaurants;
-    console.log(resData);
+
     setListOfRestraunt(resData);
     setFilteredRestaurant(resData);
   };
@@ -43,6 +43,7 @@ const Body = () => {
         <div className="search flex items-center">
           <input
             type="text"
+            data-testid="searchInput"
             className="border border-gray-300 rounded-lg p-2 w-64 focus:outline-none focus:ring-2 focus:ring-orange-500"
             placeholder="Search for restaurants..."
             value={searchText}

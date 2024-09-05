@@ -8,7 +8,10 @@ const RestaurantCard = (props) => {
     resData;
 
   return (
-    <div className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200 flex flex-col ">
+    <div
+      data-testid="resCard"
+      className="m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200 flex flex-col "
+    >
       <Link to={"/restaurants/" + resData.id}>
         <img
           className="rounded-lg mb-4 h-48 w-full object-cover"
